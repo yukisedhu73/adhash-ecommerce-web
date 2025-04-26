@@ -4,8 +4,8 @@
 </div>
 
 <div class="product-list">
-  <div class="product-card" *ngFor="let product of products">
-    <img [src]="getLocalImage(product.imageurl)" alt="{{product.name}}">
+  <div class="product-card" *ngFor="let product of paginatedProducts">
+    <img [src]="getLocalImage(product.imageurl)" alt="{{ product.name }}">
     <h3>{{ product.name }}</h3>
     <p>{{ product.description }}</p>
     <p class="price">₹{{ product.price }}</p>
@@ -20,8 +20,11 @@
   </div>
 </div>
 
-<div class="pagination">
-  <button *ngFor="let page of pages" (click)="onPageSelect(page)">
-    {{ page }}
-  </button>
-</div>
+<app-pagination
+  [totalPages]="totalPages"
+  [currentPage]="currentPage"
+  [itemsPerPage]="itemsPerPage"
+  (pageSelect)="onPageSelect($event)"
+  (pageSizeChange)="onPageSizeChange($event)">
+</app-pagination>
+
