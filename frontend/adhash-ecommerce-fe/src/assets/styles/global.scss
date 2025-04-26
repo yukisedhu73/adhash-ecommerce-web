@@ -1,25 +1,94 @@
-// src/assets/styles/global.scss
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --danger-color: #dc3545;
+  --font-family: "Poppins", sans-serif;
+  --border-radius: 8px;
+  --spacing: 1rem;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
   margin: 0;
   padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+button.danger {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Font Classes */
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+/* Forms */
+input,
+select,
+textarea {
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
   box-sizing: border-box;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
+/* Utility spacing */
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
 }
 
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
+/* Layout helpers */
+.container {
+  padding: var(--spacing);
+  max-width: 1200px;
+  margin: auto;
 }
