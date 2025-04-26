@@ -1,7 +1,11 @@
+<div class="page-header">
+  <!-- <button class="secondary" (click)="goBack()">Back</button> -->
+  <button class="primary" *ngIf="isAdmin" (click)="navigateToAdd()">Add</button>
+</div>
+
 <div class="product-list">
   <div class="product-card" *ngFor="let product of products">
     <img [src]="getLocalImage(product.imageurl)" alt="{{product.name}}">
-    
     <h3>{{ product.name }}</h3>
     <p>{{ product.description }}</p>
     <p class="price">₹{{ product.price }}</p>
@@ -10,11 +14,12 @@
       <button class="primary" *ngIf="!isAdmin" (click)="viewDetails(product.id)">View Details</button>
       <button class="secondary" *ngIf="!isAdmin">Add to Cart</button>
 
-      <button class="primary" *ngIf="isAdmin">Update</button>
+      <button class="primary" *ngIf="isAdmin" (click)="navigateToUpdate(product.id)">Update</button>
       <button class="danger" *ngIf="isAdmin">Delete</button>
     </div>
   </div>
 </div>
+
 <div class="pagination">
   <button *ngFor="let page of pages" (click)="onPageSelect(page)">
     {{ page }}

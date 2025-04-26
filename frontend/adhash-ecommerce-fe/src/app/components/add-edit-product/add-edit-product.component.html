@@ -1,0 +1,29 @@
+<form [formGroup]="productForm" (ngSubmit)="submit()">
+    <div>
+      <label>Name:</label>
+      <input formControlName="name" type="text" />
+      <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">Name is required (max 100 characters).</div>
+    </div>
+  
+    <div>
+      <label>Description:</label>
+      <input formControlName="description" type="text" />
+      <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">Description is required (max 250 characters).</div>
+    </div>
+  
+    <div>
+      <label>Price:</label>
+      <input formControlName="price" type="number" />
+      <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">Price is required.</div>
+    </div>
+  
+    <div>
+      <label>Image:</label>
+      <input type="file" (change)="onFileChange($event)" />
+      <div *ngIf="productForm.get('imageFile')?.invalid && productForm.get('imageFile')?.touched">Image is required.</div>
+    </div>
+  
+    <button type="submit" [disabled]="productForm.invalid">Submit</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+  
