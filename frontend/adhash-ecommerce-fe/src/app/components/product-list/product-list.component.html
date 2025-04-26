@@ -15,7 +15,7 @@
       <button class="secondary" *ngIf="!isAdmin">Add to Cart</button>
 
       <button class="primary" *ngIf="isAdmin" (click)="navigateToUpdate(product.id)">Update</button>
-      <button class="danger" *ngIf="isAdmin">Delete</button>
+      <button class="danger" *ngIf="isAdmin" (click)="deleteProduct(product.id)">Delete</button>
     </div>
   </div>
 </div>

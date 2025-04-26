@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,7 +20,7 @@ export class ProductListComponent {
 
   pages = [1, 2, 3];
 
-  constructor(private router: Router, private location: Location) {}
+  constructor(private productService: ProductService,private router: Router, private location: Location) { }
 
   viewDetails(id: number) {
     this.router.navigate(['/product', id]);
@@ -33,10 +34,10 @@ export class ProductListComponent {
     if (!imageurl) {
       return 'assets/product-images/default.jpeg';
     }
-  
+
     const parts = imageurl.split('/');
     const fileName = parts[parts.length - 1];
-    
+
     return `assets/product-images/${fileName}.jpeg`;
   }
 
@@ -50,5 +51,22 @@ export class ProductListComponent {
 
   navigateToUpdate(id: number): void {
     this.router.navigate(['/admin/edit-product', id]);
+  }
+
+  deleteProduct(id: number): void {
+    if (confirm('Are you sure you want to delete this product?')) {  // simple confirmation
+      this.productService.deleteProduct(id).subscribe({
+        next: () => {
+          console.log('Product deleted successfully.');
+          // After delete, you can either:
+          // 1. Refresh products list from API
+          // 2. OR remove it locally:
+          this.products = this.products.filter(p => p.id !== id);
+        },
+        error: (err:any) => {
+          console.error('Error deleting product:', err);
+        }
+      });
+    }
   }
 }

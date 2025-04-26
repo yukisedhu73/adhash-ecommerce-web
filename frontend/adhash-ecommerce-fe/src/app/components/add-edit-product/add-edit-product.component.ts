@@ -17,6 +17,7 @@ export class AddEditProductComponent {
   productForm: FormGroup;
   baseImageUrl = 'https://www.sampleurl/';
   productId: number | null = null; // <-- To detect update mode
+  selectedFile: File | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -40,25 +41,41 @@ export class AddEditProductComponent {
     });
   }
 
+  isString(value: any): boolean {
+    return typeof value === 'string';
+  }
+
   loadProduct(id: number) {
     this.productService.getProductById(id).subscribe(product => {
+      const parts = product.imageurl.split('/');
+      const fileName = parts[parts.length - 1]; // 'product7'
+
       this.productForm.patchValue({
         name: product.name,
         description: product.description,
         price: product.price,
-        imageFile: product.imageurl, // Not the actual file but you can disable file upload during edit if you want
+        imageFile: `assets/product-images/${fileName}.jpeg`, // 🔥 Local Image Path
       });
     });
   }
 
+
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.productForm.patchValue({
-        imageFile: file,
-      });
+      const reader = new FileReader();
+      reader.onload = () => {
+        // Save temporary preview URL
+        this.productForm.patchValue({
+          imageFile: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+      // Also keep the real File separately for upload/save
+      this.selectedFile = file;
     }
   }
+
 
   submit() {
     if (this.productForm.invalid) {
@@ -69,11 +86,20 @@ export class AddEditProductComponent {
     const formData = this.productForm.value;
     let imageUrl = '';
 
-    if (typeof formData.imageFile === 'string') {
-      imageUrl = formData.imageFile; // Already uploaded URL
-    } else if (formData.imageFile) {
-      const filename = formData.imageFile.name.split('.')[0];
+    if (this.selectedFile) {
+      // If user selected new file, construct URL from filename
+      const filename = this.selectedFile.name.split('.')[0];
       imageUrl = this.baseImageUrl + filename;
+    } else if (typeof formData.imageFile === 'string') {
+      if (formData.imageFile.startsWith('assets/')) {
+        // Image is local path from loadProduct -> fix it to baseImageUrl
+        const parts = formData.imageFile.split('/');
+        const filename = parts[parts.length - 1].split('.')[0]; // "product7"
+        imageUrl = this.baseImageUrl + filename;
+      } else {
+        // Otherwise assume it's already a correct URL (rare)
+        imageUrl = formData.imageFile;
+      }
     }
 
     const payload = {
@@ -97,6 +123,8 @@ export class AddEditProductComponent {
       });
     }
   }
+
+
 
   cancel() {
     this.router.navigate(['/admin']);

@@ -28,6 +28,10 @@ export class ProductService {
     return this.http.put<AddProductModel>(`${this.apiUrl}/${id}`, product);
   }
 
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
   addToCart(productId: number, quantity: number): void {
     // Logic to add product to cart via cart service
   }

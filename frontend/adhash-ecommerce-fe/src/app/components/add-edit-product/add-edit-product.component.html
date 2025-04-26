@@ -17,10 +17,14 @@
       <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">Price is required.</div>
     </div>
   
+    <div *ngIf="productForm.get('imageFile')?.value">
+      <p>Current Image:</p>
+      <img [src]="productForm.get('imageFile')?.value" alt="Product Image" width="150" />
+    </div>
+    
     <div>
-      <label>Image:</label>
-      <input type="file" (change)="onFileChange($event)" />
-      <div *ngIf="productForm.get('imageFile')?.invalid && productForm.get('imageFile')?.touched">Image is required.</div>
+      <label>Upload Image:</label>
+      <input type="file" (change)="onFileChange($event)" accept="image/*" />
     </div>
   
     <button type="submit" [disabled]="productForm.invalid">Submit</button>
