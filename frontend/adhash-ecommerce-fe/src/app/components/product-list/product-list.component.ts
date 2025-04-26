@@ -28,4 +28,16 @@ export class ProductListComponent {
   onPageSelect(page: number) {
     this.pageChange.emit(page);
   }
+
+  getLocalImage(imageurl: string): string {
+    if (!imageurl) {
+      return 'assets/product-images/default.jpeg'; // fallback image if missing
+    }
+  
+    const parts = imageurl.split('/');
+    const fileName = parts[parts.length - 1]; // example "product1"
+    
+    return `assets/product-images/${fileName}.jpeg`;
+  }
+  
 }
