@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service'; // Import the product service
 import { ProductDetailComponent } from '../../components/product-detail/product-detail.component';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../services/cart.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -15,7 +17,9 @@ export class ProductDetailPageComponent implements OnInit {
   product: any = {}; // Product data to pass to the child
   productId: number = 0;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductService, 
+    private cartService : CartService,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     // Get the product ID from the URL parameters
@@ -27,8 +31,7 @@ export class ProductDetailPageComponent implements OnInit {
     });
   }
 
-  onAddToCart(event: { product: any, quantity: number }): void {
-    console.log('Product added to cart:', event);
-    // Handle adding the product to the cart logic, e.g., storing in localStorage
-  }
+  handleAddToCart(product: Product) {
+      this.cartService.addToCart(product, 1);
+    }
 }
