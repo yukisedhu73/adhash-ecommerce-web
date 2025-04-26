@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,10 @@ export class ProductListComponent {
 
   pages = [1, 2, 3];
 
-  constructor(private productService: ProductService,private router: Router, private location: Location) { }
+  constructor(private productService: ProductService,
+    private router: Router,
+    private cartService: CartService,
+    private location: Location) { }
 
   viewDetails(id: number) {
     this.router.navigate(['/product', id]);
@@ -58,15 +62,16 @@ export class ProductListComponent {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
           console.log('Product deleted successfully.');
-          // After delete, you can either:
-          // 1. Refresh products list from API
-          // 2. OR remove it locally:
           this.products = this.products.filter(p => p.id !== id);
         },
-        error: (err:any) => {
+        error: (err: any) => {
           console.error('Error deleting product:', err);
         }
       });
     }
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product, 1); // Always 1 quantity
   }
 }

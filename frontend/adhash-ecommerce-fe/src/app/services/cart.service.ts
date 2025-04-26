@@ -7,21 +7,22 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class CartService {
-
   private cartItems: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
   getCartItems(): CartItem[] {
     return this.cartItems;
   }
 
-  addToCart(product: Product, quantity: number): void {
+  addToCart(product: Product, quantity: number = 1): void {
     const item = this.cartItems.find(c => c.product.id === product.id);
     if (item) {
-      item.quantity += quantity;
+      alert('Already added to cart!');
+      return;
     } else {
       this.cartItems.push({ product, quantity });
+      localStorage.setItem('cart', JSON.stringify(this.cartItems));
+      alert('Product added to cart!');
     }
-    localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
 
   removeFromCart(productId: number): void {
