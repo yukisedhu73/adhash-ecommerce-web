@@ -1,0 +1,14 @@
+.layout {
+    display: flex;
+    height: calc(100vh - 64px); /* Full height minus top-bar height */
+    margin-top: 64px; /* Push layout down */
+  }
+  
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing);
+    background-color: #fff;
+    height: calc(100vh - 64px); /* Match main height */
+  }
+  

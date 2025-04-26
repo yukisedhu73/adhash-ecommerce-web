@@ -1,6 +1,8 @@
 <nav class="side-bar">
-    <a routerLink="/products">Product List</a>
-    <a routerLink="/admin">Admin Panel</a>
-    <a routerLink="/cart">Cart</a>
-  </nav>
-  
+  <a routerLink="/products" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    Product List
+  </a>
+  <a routerLink="/admin" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    Admin Panel
+  </a>
+</nav>

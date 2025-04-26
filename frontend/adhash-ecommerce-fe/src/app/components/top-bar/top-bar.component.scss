@@ -1,9 +1,61 @@
+/* Top Bar */
 .top-bar {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 64px; /* Important: set fixed height */
+  z-index: 10; /* So it stays above everything */
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+// .sign-out-btn {
+//   background-color: #ff4d4d;
+//   color: white;
+//   border: none;
+//   padding: 0.5rem 1rem;
+//   cursor: pointer;
+// }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
+  .top-nav {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 0.5rem;
+  }
+}

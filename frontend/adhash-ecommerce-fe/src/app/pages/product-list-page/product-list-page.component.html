@@ -1,1 +1,2 @@
-<p>product-list-page works!</p>
+<app-product-list [products]="pagedProducts" [isAdmin]="isAdminRoute" (pageChange)="onPageChange($event)">
+</app-product-list>

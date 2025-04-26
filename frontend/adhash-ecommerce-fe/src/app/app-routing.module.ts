@@ -1,18 +1,13 @@
 // src/app/app-routing.module.ts
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
-import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { Routes } from '@angular/router';
+import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component'
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 
-const routes: Routes = [
-  { path: '', component: ProductListPageComponent },
+export const routes: Routes = [
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'products', component: ProductListPageComponent },
   { path: 'product/:id', component: ProductDetailPageComponent },
-  { path: 'cart', component: CartPageComponent }
+  { path: 'cart', component: CartPageComponent },
+  { path: 'admin', component: ProductListPageComponent }, 
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
