@@ -25,6 +25,10 @@
     border-bottom: 1px solid #909090;
     align-items: center;
     justify-content: space-between;
+     /* Animation when cards enter */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 0.5s ease forwards;
 
     .item-image {
       flex: 0 0 150px;
@@ -111,6 +115,13 @@
 
     .primary {
       margin-top: var(--spacing);
+    }
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 

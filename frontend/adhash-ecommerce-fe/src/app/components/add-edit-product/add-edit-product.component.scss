@@ -21,13 +21,14 @@ label {
 
 input[type="text"],
 input[type="number"],
-input[type="file"], textarea {
+input[type="file"],
+textarea {
   font-size: 1rem;
   background-color: var(--bg-color);
   color: var(--secondary-color);
 }
 
-button{
+button {
   margin-right: 1em;
 }
 

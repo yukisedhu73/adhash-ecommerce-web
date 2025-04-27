@@ -18,7 +18,7 @@ export class TopBarComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    debugger;
+    // debugger;
     this.subscription = this.cartService.cartCount$.subscribe(count => {
       this.cartCount = count;
     });

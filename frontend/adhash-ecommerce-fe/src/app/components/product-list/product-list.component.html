@@ -8,7 +8,8 @@
 </div>
 
 <div class="product-list">
-  <div class="product-card" *ngFor="let product of paginatedProducts">
+  <div class="product-card" *ngFor="let product of paginatedProducts;let i = index"
+    [style.animationDelay]="i * 100 + 'ms'">
     <img [src]="getLocalImage(product.imageurl)" alt="{{ product.name }}">
     <h3>{{ product.name }}</h3>
     <p>{{ product.description }}</p>
