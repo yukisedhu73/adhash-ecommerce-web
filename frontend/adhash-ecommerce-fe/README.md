@@ -13,13 +13,6 @@ Welcome to **AdHash E-commerce** – a fully responsive e-commerce web applicati
   - Sidebar navigation for desktops
   - Topbar with hamburger menu for mobile devices\
 
-## 📸 Screenshots
-
-| Desktop View | Tablet View | Mobile View |
-|:------------:|:-----------:|:-----------:|
-| ![Desktop](frontend/adhash-ecommerce-fe/src/assets/screenshots/desktop.png) | ![Tablet](frontend/adhash-ecommerce-fe/src/assets/screenshots/tab.png) | ![Mobile](frontend/adhash-ecommerce-fe/src/assets/screenshots/mobile.png) |
-
-
 ## 🛠 Tech Stack
 
 - **Angular** (Standalone Components)
