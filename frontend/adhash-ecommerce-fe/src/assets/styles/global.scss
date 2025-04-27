@@ -1,6 +1,8 @@
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
+  --bg-color: #000000FF;
+  --primary-color: #ff4533;
+  --secondary-color: #ffffff;
+  --fade-color: #74231b;
   --danger-color: #dc3545;
   --font-family: "Poppins", sans-serif;
   --border-radius: 8px;
@@ -17,8 +19,8 @@ body {
   font-family: var(--font-family);
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--secondary-color);
 }
 
 /* Buttons */
@@ -33,12 +35,12 @@ button {
 
 button.primary {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 button.secondary {
   background-color: var(--secondary-color);
-  color: #fff;
+  color: black;
 }
 
 button.danger {
