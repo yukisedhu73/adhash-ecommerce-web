@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
-import { PaginationComponent } from '../pagination/pagination.component' // Import the new pagination component
+import { PaginationComponent } from '../shared/pagination/pagination.component' // Import the new pagination component
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-product-list',
@@ -23,13 +24,16 @@ export class ProductListComponent implements OnInit, OnChanges {
   currentPage: number = 1;
   itemsPerPage: number = 5;
   totalPages: number[] = [];
+  showDeleteModal = false;
+  selectedProduct: Product | null = null;
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private cartService: CartService,
-    private location: Location
-  ) {}
+    private location: Location,
+    private notification: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.setupPagination();
@@ -63,7 +67,7 @@ export class ProductListComponent implements OnInit, OnChanges {
     this.itemsPerPage = newSize;
     this.setupPagination(); // Update pagination with the new page size
   }
-  
+
 
   viewDetails(id: number) {
     this.router.navigate(['/products', id]);
@@ -90,19 +94,32 @@ export class ProductListComponent implements OnInit, OnChanges {
     this.router.navigate(['/admin/edit-product', id]);
   }
 
-  deleteProduct(id: number): void {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteProduct(id).subscribe({
+  confirmDelete(product: Product): void {
+    this.selectedProduct = product;
+    this.showDeleteModal = true;
+  }
+
+  cancelDelete(): void {
+    this.showDeleteModal = false;
+    this.selectedProduct = null;
+  }
+
+  deleteProduct(): void {
+    if (this.selectedProduct) {
+      this.productService.deleteProduct(this.selectedProduct.id).subscribe({
         next: () => {
-          console.log('Product deleted successfully.');
-          this.products = this.products.filter(p => p.id !== id);
+          this.notification.show('Product deleted successfully.');
+          this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
           this.setupPagination();
+          this.router.navigate(['/products'])
         },
         error: (err: any) => {
           console.error('Error deleting product:', err);
         }
       });
     }
+    this.showDeleteModal = false;
+    this.selectedProduct = null;
   }
 
   addToCart(product: Product) {

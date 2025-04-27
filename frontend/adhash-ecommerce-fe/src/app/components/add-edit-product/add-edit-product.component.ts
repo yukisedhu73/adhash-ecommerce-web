@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -24,7 +25,8 @@ export class AddEditProductComponent {
     private fb: FormBuilder,
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
   ) {
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
@@ -50,13 +52,13 @@ export class AddEditProductComponent {
   loadProduct(id: number) {
     this.productService.getProductById(id).subscribe(product => {
       const parts = product.imageurl.split('/');
-      const fileName = parts[parts.length - 1]; // 'product7'
+      const fileName = parts[parts.length - 1];
 
       this.productForm.patchValue({
         name: product.name,
         description: product.description,
         price: product.price,
-        imageFile: `assets/product-images/${fileName}.jpeg`, // 🔥 Local Image Path
+        imageFile: `assets/product-images/${fileName}.jpeg`,
       });
     });
   }
@@ -73,7 +75,6 @@ export class AddEditProductComponent {
         });
       };
       reader.readAsDataURL(file);
-      // Also keep the real File separately for upload/save
       this.selectedFile = file;
     }
   }
@@ -96,7 +97,7 @@ export class AddEditProductComponent {
       if (formData.imageFile.startsWith('assets/')) {
         // Image is local path from loadProduct -> fix it to baseImageUrl
         const parts = formData.imageFile.split('/');
-        const filename = parts[parts.length - 1].split('.')[0]; // "product7"
+        const filename = parts[parts.length - 1].split('.')[0];
         imageUrl = this.baseImageUrl + filename;
       } else {
         // Otherwise assume it's already a correct URL (rare)
@@ -114,13 +115,13 @@ export class AddEditProductComponent {
     if (this.productId) {
       // Update
       this.productService.updateProduct(this.productId, payload).subscribe((res) => {
-        console.log('Product updated successfully:', res);
+        this.notification.show('Product updated successfully!');
         this.router.navigate(['/admin']);
       });
     } else {
       // Add
       this.productService.addProduct(payload).subscribe((res) => {
-        console.log('Product added successfully:', res);
+        this.notification.show('Product Saved successfully!');
         this.router.navigate(['/admin']);
       });
     }

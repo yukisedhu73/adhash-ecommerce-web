@@ -52,6 +52,12 @@
     border-radius: 50%;
 }
 
+.sign-out img{
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .top-bar {
     flex-direction: column;
