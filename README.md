@@ -91,9 +91,10 @@ Welcome to **AdHash E-commerce** – a fully responsive e-commerce web applicati
 
 ## 📸 Screenshots
 
-|                Desktop View                |               Mobile View                |
-| :----------------------------------------: | :--------------------------------------: |
-| ![Desktop](assets/screenshots/desktop.png) | ![Mobile](assets/screenshots/mobile.png) |
+| Desktop View | Tablet View | Mobile View |
+|:------------:|:-----------:|:-----------:|
+| ![Desktop](frontend/adhash-ecommerce-fe/src/assets/screenshots/desktop.png) | ![Tablet](frontend/adhash-ecommerce-fe/src/assets/screenshots/tab.png) | ![Mobile](frontend/adhash-ecommerce-fe/src/assets/screenshots/mobile.png) |
+
 
 ## 🛠 Tech Stack
 
