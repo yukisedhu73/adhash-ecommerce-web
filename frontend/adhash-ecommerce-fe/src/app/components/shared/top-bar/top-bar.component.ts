@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class TopBarComponent implements OnInit, OnDestroy {
   cartCount = 0;
   private subscription!: Subscription;
+  menuOpen = false;
 
   constructor(private cartService: CartService) { }
 
@@ -22,6 +23,15 @@ export class TopBarComponent implements OnInit, OnDestroy {
     this.subscription = this.cartService.cartCount$.subscribe(count => {
       this.cartCount = count;
     });
+  }
+
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  signOut() {
+    this.menuOpen = false;
   }
 
   ngOnDestroy() {

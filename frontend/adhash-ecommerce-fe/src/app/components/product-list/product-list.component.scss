@@ -122,3 +122,10 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 850px) {
+  .product-card  img{
+    height: auto !important;
+    object-fit: contain;
+  }
+}

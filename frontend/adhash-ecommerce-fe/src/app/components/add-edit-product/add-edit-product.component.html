@@ -22,7 +22,8 @@
 
   <div *ngIf="productForm.get('imageFile')?.value">
     <label>Current Image:</label>
-    <img [src]="productForm.get('imageFile')?.value" alt="Product Image" width="150" />
+    <img [src]="productForm.get('imageFile')?.value" title="Choose Another file to replace the image"
+      alt="Product Image" width="150" />
   </div>
 
   <div>

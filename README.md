@@ -33,8 +33,8 @@ A simple backend REST API for managing e-commerce products, built with **Node.js
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ecommerce-backend.git
-cd ecommerce-backend
+git clone https://github.com/yukisedhu73/adhash-ecommerce-web.git
+cd adhash-ecommerce-web/backend
 ```
 
 ### 2. Install dependencies:
@@ -64,7 +64,7 @@ CREATE TABLE products (
   name VARCHAR(100) NOT NULL,
   description TEXT,
   price NUMERIC(10, 2) NOT NULL,
-  imageUrl TEXT
+  imageurl TEXT
 );
 ```
 
@@ -72,4 +72,53 @@ CREATE TABLE products (
 
 ```bash
 npm run dev
+```
+
+# AdHash E-commerce Frontend 🛒
+
+## frontend readme
+
+Welcome to **AdHash E-commerce** – a fully responsive e-commerce web application built with **Angular** and **pure CSS media queries**!
+
+## ✨ Features
+
+- 🛍 **Product List** page
+- 🛒 **Cart** functionality
+- 🛠 **Admin Panel** for managing products
+- 📱 **Responsive Design**:
+  - Sidebar navigation for desktops
+  - Topbar with hamburger menu for mobile devices\
+
+## 📸 Screenshots
+
+|                Desktop View                |               Mobile View                |
+| :----------------------------------------: | :--------------------------------------: |
+| ![Desktop](assets/screenshots/desktop.png) | ![Mobile](assets/screenshots/mobile.png) |
+
+## 🛠 Tech Stack
+
+- **Angular** (Standalone Components)
+- **SCSS** for styling
+- **HTML5** and **CSS3**
+- **TypeScript**
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yukisedhu73/adhash-ecommerce-web.git
+cd adhash-ecommerce-web/frontend/adhash-ecommerce-fe
+```
+
+### 2. Install dependencies:
+
+```bash
+npm install
+```
+
+### 3. Run the Project :
+
+```bash
+ng serve
 ```
