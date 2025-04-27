@@ -62,6 +62,8 @@ export class CartService {
   }
 
   private calculateCartCount(): number {
-    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+    //just no of items enough not quantity count
+    // return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+    return this.cartItems?.length;
   }
 }

@@ -29,22 +29,53 @@ button {
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, transform 0.2s ease;
 }
 
+/* Primary button */
 button.primary {
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
+button.primary:hover {
+  background-color: #e03e2d; /* slightly darker on hover */
+  transform: translateY(-4px); /* lift up a little */
+  box-shadow: 0 4px 12px rgba(255, 69, 51, 0.4);
+}
+
+/* Secondary button */
 button.secondary {
   background-color: var(--secondary-color);
   color: black;
 }
 
-button:hover {
+button.secondary:hover {
+  background-color: #e0e0e0; /* slight grey on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Danger button stays same */
+button.danger {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+button.danger:hover {
   opacity: 0.9;
 }
+
+/* Common hover for all buttons */
+button:hover {
+  opacity: 0.90;
+}
+
+/* Optional: Small press effect */
+button:active {
+  transform: scale(0.97);
+}
+
 
 /* Font Classes */
 .font-light {
