@@ -1,9 +1,8 @@
 :root {
-  --bg-color: #000000FF;
+  --bg-color: #000000ff;
   --primary-color: #ff4533;
   --secondary-color: #ffffff;
   --fade-color: #74231b;
-  --danger-color: #dc3545;
   --font-family: "Poppins", sans-serif;
   --border-radius: 8px;
   --spacing: 1rem;
@@ -41,11 +40,6 @@ button.primary {
 button.secondary {
   background-color: var(--secondary-color);
   color: black;
-}
-
-button.danger {
-  background-color: var(--danger-color);
-  color: #fff;
 }
 
 button:hover {
