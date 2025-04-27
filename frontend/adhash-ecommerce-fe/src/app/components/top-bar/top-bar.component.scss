@@ -1,4 +1,3 @@
-/* Top Bar */
 .top-bar {
   position: fixed;
   top: 0;
@@ -11,10 +10,9 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  height: 64px; /* Important: set fixed height */
-  z-index: 10; /* So it stays above everything */
+  height: 64px;
+  z-index: 10;
 }
-
 
 .logo {
   font-size: 1.5rem;
@@ -27,20 +25,33 @@
 }
 
 .top-nav a {
+  position: relative; /* important for badge */
   color: #fff;
   text-decoration: none;
   margin-right: 1rem;
 }
 
-// .sign-out-btn {
-//   background-color: #ff4d4d;
-//   color: white;
-//   border: none;
-//   padding: 0.5rem 1rem;
-//   cursor: pointer;
-// }
+.cart-wrapper {
+  position: relative;
+}
 
-/* Responsive design */
+.cart-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.cart-count {
+  position: absolute;
+    top: -19px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 50%;
+}
+
 @media (max-width: 768px) {
   .top-bar {
     flex-direction: column;

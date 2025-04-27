@@ -1,6 +1,6 @@
 <div class="page-header">
   <!-- <button class="secondary" (click)="goBack()">Back</button> -->
-  <button class="primary" *ngIf="isAdmin" (click)="navigateToAdd()">Add</button>
+  <button class="primary" *ngIf="isAdmin" (click)="navigateToAdd()">Add Products +</button>
 </div>
 
 <div class="product-list">
@@ -12,13 +12,14 @@
 
     <div class="buttons">
       <button class="primary" *ngIf="!isAdmin" (click)="viewDetails(product.id)">View Details</button>
-      <button class="secondary cart-btn" *ngIf="!isAdmin" (click)="addToCart(product)">
+      <button class="secondary cart-btn" title="Add to Cart" *ngIf="!isAdmin" (click)="addToCart(product)">
         <img src="assets/images/grocery-store.png" alt="cart image" width="24" height="24">
       </button>
-
-      <button class="primary" *ngIf="isAdmin" (click)="navigateToUpdate(product.id)">Update</button>
-      <button class="danger" *ngIf="isAdmin" (click)="deleteProduct(product.id)">Delete</button>
+    
+      <button class="secondary" *ngIf="isAdmin" (click)="navigateToUpdate(product.id)">Update</button>
+      <button class="primary" *ngIf="isAdmin" (click)="deleteProduct(product.id)">Delete</button>
     </div>
+    
   </div>
 </div>
 

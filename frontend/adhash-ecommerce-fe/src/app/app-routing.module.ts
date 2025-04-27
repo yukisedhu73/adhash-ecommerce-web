@@ -8,7 +8,7 @@ import { AddEditProductComponent } from './components/add-edit-product/add-edit-
 export const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'products', component: ProductListPageComponent },
-  { path: 'product/:id', component: ProductDetailPageComponent },
+  { path: 'products/:id', component: ProductDetailPageComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'admin', component: ProductListPageComponent },
   { path: 'admin/add-product', component: AddEditProductComponent },

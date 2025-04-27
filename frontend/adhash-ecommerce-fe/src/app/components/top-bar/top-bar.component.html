@@ -1,7 +1,13 @@
 <header class="top-bar">
   <div class="logo">🛒 AdHash Ecommerce</div>
+
   <nav class="top-nav">
-    <a routerLink="/cart">Cart</a>
-    <button class="secondary">Sign Out</button>
+    <div class="cart-wrapper">
+      <a routerLink="/cart" title="View Cart Items">
+        <img src="assets/images/grocery-white.png" alt="Cart Icon" class="cart-icon">
+        <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+    </div>
+    <button class="secondary" title="Sign Out">Sign Out</button>
   </nav>
 </header>

@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   paginatedProducts: Product[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 1;
+  itemsPerPage: number = 5;
   totalPages: number[] = [];
 
   constructor(
@@ -66,7 +66,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   
 
   viewDetails(id: number) {
-    this.router.navigate(['/product', id]);
+    this.router.navigate(['/products', id]);
   }
 
   getLocalImage(imageurl: string): string {

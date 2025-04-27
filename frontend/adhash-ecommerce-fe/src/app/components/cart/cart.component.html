@@ -2,7 +2,7 @@
   <h2>Your Cart</h2>
 
   <div *ngIf="cartItems.length === 0">
-    <p>Cart is empty!</p>
+    <h3 class="empty-text">Your Cart is empty!</h3>
   </div>
 
   <div *ngFor="let item of cartItems" class="cart-item">
@@ -15,9 +15,9 @@
       <div class="description">{{ item.product.description }}</div>
 
       <div class="quantity-control">
-        <button (click)="decreaseQuantity(item)">-</button>
+        <button class="secondary" (click)="decreaseQuantity(item)">-</button>
         <span>{{ item.quantity }}</span>
-        <button (click)="increaseQuantity(item)">+</button>
+        <button class="secondary" (click)="increaseQuantity(item)">+</button>
       </div>
 
       <button class="remove-button secondary" (click)="removeItem(item.product.id)">Remove</button>

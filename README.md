@@ -1,23 +1,7 @@
 # adhash-ecommerce-web
 
+## backend readme
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## backend readme 
 # 🛒 E-commerce Backend API
 
 A simple backend REST API for managing e-commerce products, built with **Node.js**, **Express.js**, and **PostgreSQL**.
@@ -54,19 +38,25 @@ cd ecommerce-backend
 ```
 
 ### 2. Install dependencies:
-npm install 
+
+```bash
+npm install
+```
 
 ### 3. Create a .env file in the root and add your database config:
 
+```bash
 PORT=5000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_postgres_user
 DB_PASSWORD=your_postgres_password
 DB_NAME=ecommerce_db
+```
 
 ### 4. Set up the PostgreSQL database:
 
+```bash
 CREATE DATABASE ecommerce_db;
 
 CREATE TABLE products (
@@ -76,6 +66,10 @@ CREATE TABLE products (
   price NUMERIC(10, 2) NOT NULL,
   imageUrl TEXT
 );
+```
 
 ### 5. Run the serve :
+
+```bash
 npm run dev
+```

@@ -18,6 +18,7 @@ export class AddEditProductComponent {
   baseImageUrl = 'https://www.sampleurl/';
   productId: number | null = null; // <-- To detect update mode
   selectedFile: File | null = null;
+  isEditMode = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +38,7 @@ export class AddEditProductComponent {
       if (id) {
         this.productId = +id;
         this.loadProduct(this.productId);
+        this.isEditMode = true;
       }
     });
   }
