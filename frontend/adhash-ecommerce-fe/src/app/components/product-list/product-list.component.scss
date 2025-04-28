@@ -43,7 +43,7 @@
 
   img {
     width: 100%;
-    height: 200px;
+    height: auto;
     object-fit: cover;
     border-radius: var(--border-radius);
   }
@@ -123,7 +123,7 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1080px) {
   .product-card  img{
     height: auto !important;
     object-fit: contain;
