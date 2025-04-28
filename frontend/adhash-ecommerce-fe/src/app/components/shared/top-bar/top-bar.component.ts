@@ -30,6 +30,10 @@ export class TopBarComponent implements OnInit, OnDestroy {
     this.menuOpen = !this.menuOpen;
   }
 
+  hideMenu() {
+    this.menuOpen = false;
+  }
+
   signOut() {
     this.menuOpen = false;
   }

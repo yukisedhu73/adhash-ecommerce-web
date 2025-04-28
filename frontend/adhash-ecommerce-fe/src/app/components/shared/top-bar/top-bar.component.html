@@ -3,7 +3,7 @@
   <div class="mob-logo">AdHash</div>
 
   <nav class="top-nav">
-    <div class="cart-wrapper">
+    <div class="cart-wrapper" (click)="hideMenu()">
       <a routerLink="/cart" title="View Cart Items">
         <img src="assets/images/grocery-white.png" alt="Cart Icon" class="cart-icon">
         <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
